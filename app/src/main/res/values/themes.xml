@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.EnchantedCauldron" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/MysticPurple</item>
+        <item name="colorSecondary">@color/GreenPotion</item>
+        <item name="colorSecondaryVariant">@color/LunarWhite</item>
+
+    </style>
+
+    <style name="Theme.EnchantedCauldron" parent="Base.Theme.EnchantedCauldron" />
+</resources>

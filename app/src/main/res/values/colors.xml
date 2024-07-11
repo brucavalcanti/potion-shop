@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!--Light-Theme Custom Colors-->
+        <color name="MysticPurple">#6A0DAD</color>
+        <color name="GreenPotion">#7FFF00</color>
+        <color name="LunarWhite">#F5F5F5</color>
+    <!--Dark-Theme Custom Colors-->
+        <color name="NightBlue">#191970</color>
+        <color name="EnchantedGold">#FFD700</color>
+</resources>
