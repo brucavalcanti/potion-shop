@@ -1,6 +1,5 @@
 package com.cavalcantibruno.enchantedcauldron
 
-import android.content.ContentResolver
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,8 +10,7 @@ import com.cavalcantibruno.enchantedcauldron.databinding.ShopItemBinding
 import com.cavalcantibruno.enchantedcauldron.model.Potion
 import com.squareup.picasso.Picasso
 
-class PotionAdapter (private var potionList:List<Potion>,private val click:(Potion)->Unit
-    /*private var potionList:List<Potion>*/)
+class PotionAdapter (private var potionList:List<Potion>,private val click:(Potion)->Unit)
     :RecyclerView.Adapter<PotionAdapter.PotionViewHolder>() {
 
         //var potionList = emptyList<Potion>()
@@ -36,8 +34,6 @@ class PotionAdapter (private var potionList:List<Potion>,private val click:(Poti
                 }
             }
         }
-
-
 
     fun reloadList(lista:List<Potion>)
     {

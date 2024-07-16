@@ -6,10 +6,12 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
+import com.cavalcantibruno.enchantedcauldron.R
 import com.cavalcantibruno.enchantedcauldron.database.PotionDAO
 import com.cavalcantibruno.enchantedcauldron.databinding.ActivityRegisterPotionBinding
 import com.cavalcantibruno.enchantedcauldron.model.Potion
@@ -33,13 +35,15 @@ class RegisterPotionActivity : AppCompatActivity() {
         var potionUpdate:Potion?=null
         val bundle = intent.extras
 
+        generateSpinner()
+
         with(binding) {
 
             if(bundle!=null){
                 potionUpdate = bundle.getSerializable("potionUpdate",Potion::class.java)
                 editPotionName.setText(potionUpdate?.potionName)
                 editPotionDescription.setText(potionUpdate?.potionDescription)
-                editPotionCategory.setText(potionUpdate?.category)
+                //editPotionCategory.selectedItem
                 editPotionPrice.setText(potionUpdate?.potionPrice.toString())
                 editStock.setText(potionUpdate?.stockQuantity.toString())
                 Picasso.get().load(potionUpdate?.potionImage).into(potionImageRegister)
@@ -90,20 +94,28 @@ class RegisterPotionActivity : AppCompatActivity() {
         with(binding) {
             val pName = editPotionName.text.toString()
             val pDescription = editPotionDescription.text.toString()
-            val pCategory = editPotionCategory.text.toString()
+            val pCategory = editPotionCategory.selectedItem.toString()
             val pPrice = editPotionPrice.text.toString()
             val pStock = editStock.text.toString()
 
-            val itemUpdate = Potion(potion.potionId,pName,pDescription,pCategory,pPrice.toDouble(),
-                pStock.toInt(), selectedImage.toString()
-            )
-            Log.d("RegisterPotionActivity", "updatePotion: $itemUpdate ")
-            val potionDAO = PotionDAO(this@RegisterPotionActivity)
-            if(potionDAO.updatePotion(itemUpdate)){
-                message("Item Updated successfully")
+            if(pName.isEmpty() || pDescription.isEmpty() || pCategory.isEmpty() ||
+                pPrice.isEmpty() || pStock.isEmpty() || selectedImage==null){
+                 message("Please fill in all fields")
+            }else {
+
+                val itemUpdate = Potion(
+                    potion.potionId, pName, pDescription, pCategory, pPrice.toDouble(),
+                    pStock.toInt(), selectedImage.toString()
+                )
+                Log.d("RegisterPotionActivity", "updatePotion: $itemUpdate ")
+                val potionDAO = PotionDAO(this@RegisterPotionActivity)
+                if (potionDAO.updatePotion(itemUpdate)) {
+                    message("Item Updated successfully")
+                }
+                finish()
             }
         }
-        finish()
+
     }
 
     //Function to save and upload the data
@@ -112,23 +124,43 @@ class RegisterPotionActivity : AppCompatActivity() {
         with(binding) {
             val pName = editPotionName.text.toString()
             val pDescription = editPotionDescription.text.toString()
-            val pCategory = editPotionCategory.text.toString()
+            val pCategory = editPotionCategory.selectedItem.toString()
             val pPrice = editPotionPrice.text.toString()
             val pStock = editStock.text.toString()
 
-            val item = Potion(null, pName, pDescription,pCategory,pPrice.toDouble(),
-                pStock.toInt(),selectedImage.toString())
+            if(pName.isEmpty()|| pDescription.isEmpty() || pCategory.isEmpty() ||
+                pPrice.isEmpty() || pStock.isEmpty() || selectedImage == null)
+            {
+                message("Please, fill in all fields")
+            } else {
 
-            val potionDAO = PotionDAO(this@RegisterPotionActivity)
-            potionDAO.createPotion(item)
+                val item = Potion(
+                    null, pName, pDescription, pCategory, pPrice.toDouble(),
+                    pStock.toInt(), selectedImage.toString()
+                )
+
+                Log.d("RegisterPotionActivity", "registerPotion: ${item} ")
+
+                val potionDAO = PotionDAO(this@RegisterPotionActivity)
+                potionDAO.createPotion(item)
+                finish()
+            }
         }
-        finish()
+
     }
 
     //Auxiliary function just for a more clean code
-    fun message(text:String)
+
+    private fun generateSpinner(){
+        val listCategory = resources.getStringArray(R.array.categories)
+        binding.editPotionCategory.adapter = ArrayAdapter(this,
+            android.R.layout.simple_spinner_item,listCategory)
+    }
+
+    private fun message(text:String)
     {
         Toast.makeText(this,text, Toast.LENGTH_LONG).show()
     }
+
 
 }

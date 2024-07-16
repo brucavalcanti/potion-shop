@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import com.cavalcantibruno.enchantedcauldron.R
@@ -11,6 +12,7 @@ import com.cavalcantibruno.enchantedcauldron.database.PotionDAO
 import com.cavalcantibruno.enchantedcauldron.databinding.ActivityPotionDetailBinding
 import com.cavalcantibruno.enchantedcauldron.model.Potion
 import com.squareup.picasso.Picasso
+import kotlin.math.log
 
 class PotionDetailActivity : AppCompatActivity() {
 
@@ -24,15 +26,17 @@ class PotionDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val potionItem = intent.getSerializableExtra("shopItem",Potion::class.java)
+        Log.d("PotionDetailActivity", "onCreate: Received from the intent = $potionItem ")
 
         with(binding)
         {
-            Picasso.get().load(potionItem?.potionImage).into(detailedPotionImage)
+            Picasso.get().load(potionItem?.potionImage).resize(512,512).into(detailedPotionImage)
             detailedPotionName.text= potionItem?.potionName
             detailedPotionPrice.text=potionItem?.potionPrice.toString()
             detailedPotionDescription.text= potionItem?.potionDescription
 
             btnBack.setOnClickListener {
+                Log.i("PotionDetailActivity","btnBackSetOnClickListener: Closing the activity")
                 finish()
             }
             btnDelete.setOnClickListener {
@@ -45,7 +49,10 @@ class PotionDetailActivity : AppCompatActivity() {
             btnUpdateItem.setOnClickListener {
                 val intent = Intent(this@PotionDetailActivity,RegisterPotionActivity::class.java)
                 intent.putExtra("potionUpdate",potionItem)
+                Log.d("PotionDetailActivity", "btnUpdateItem: $potionItem")
                 startActivity(intent)
+                Log.i("PotionDetailActivity",
+                    "btnUpdateItem: startActivity called, closing the activity")
                 finish()
             }
         }
@@ -61,6 +68,7 @@ class PotionDetailActivity : AppCompatActivity() {
         alertBuilder.setPositiveButton("Yes"){ _, _ ->
             val potionDAO = PotionDAO(this@PotionDetailActivity)
              potionDAO.removePotion(id)
+            Log.i("PotionDetailActivity", "potionDispose: Remove item Called ")
              finish()
         }
         alertBuilder.setNegativeButton("No"){ _, _ -> }

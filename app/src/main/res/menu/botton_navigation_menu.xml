@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/shop"
+        android:enabled="true"
+        android:icon="@drawable/ic_store_24"
+        android:title="Shop" />
+    <item
+        android:id="@+id/addPotion"
+        android:icon="@drawable/ic_add_24"
+        android:title="New Item"
+        android:visible="true" />
+    <item
+        android:id="@+id/shopStock"
+        android:enabled="true"
+        android:icon="@drawable/ic_stock_24"
+        android:title="Stock" />
+    <item
+        android:id="@+id/purchaseHistory"
+        android:enabled="true"
+        android:icon="@drawable/ic_purchase_history_24"
+        android:title="Purchase History" />
+</menu>

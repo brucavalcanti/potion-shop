@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/MysticPurple"
+    android:background="@drawable/shelf"
     tools:context=".activities.PotionDetailActivity">
 
     <androidx.cardview.widget.CardView
@@ -38,11 +38,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/LunarWhite"
+                android:shadowColor="@color/MysticPurple"
                 android:text="Delete Item"
+                android:textColor="@color/MysticPurple"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline11" />
+                app:layout_constraintTop_toTopOf="@+id/guideline11"
+                app:rippleColor="@color/MysticPurple"
+                app:strokeColor="@color/MysticPurple"
+                app:strokeWidth="1dp" />
 
             <TextView
                 android:id="@+id/detailedPotionDescription"
@@ -52,6 +58,7 @@
                 android:layout_marginTop="44dp"
                 android:layout_marginEnd="32dp"
                 android:text="TextView"
+                android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -63,6 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/bag_of_coins"
                 android:text="TextView"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -100,6 +108,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.86" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

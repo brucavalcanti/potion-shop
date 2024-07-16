@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">EnchantedCauldron</string>
+
+    <string-array name="categories">
+        <item>Select a Category</item>
+        <item>Antidote</item>
+        <item>Bomb</item>
+        <item>Component</item>
+        <item>Elixir</item>
+        <item>Potion</item>
+    </string-array>
 </resources>
