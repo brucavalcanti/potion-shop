@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/shopItem"
+        android:icon="@drawable/ic_store_24"
+        android:title="Shop" />
+    <item
+        android:id="@+id/basketItem"
+        android:icon="@drawable/ic_basket_24"
+        android:title="Basket" />
+</menu>

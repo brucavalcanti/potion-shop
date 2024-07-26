@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cavalcantibruno.enchantedcauldron.StockAdapter
+import com.cavalcantibruno.enchantedcauldron.adapters.StockAdapter
 import com.cavalcantibruno.enchantedcauldron.database.DatabaseHelper
 import com.cavalcantibruno.enchantedcauldron.database.PotionDAO
 import com.cavalcantibruno.enchantedcauldron.databinding.FragmentStockBinding

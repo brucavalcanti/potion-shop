@@ -17,6 +17,15 @@
         android:theme="@style/Theme.EnchantedCauldron"
         tools:targetApi="31">
         <activity
+            android:name=".activities.AdventurerCartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AdventurerItemDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AdventurerActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ShopOwnerActivity"
             android:exported="false" />
         <activity

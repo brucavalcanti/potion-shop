@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         DatabaseHelper(this)
 
         binding.btnOpen.setOnClickListener {
-            val intent = Intent(this, ShopOwnerActivity::class.java)
+            val intent = Intent(this, AdventurerActivity::class.java)
             startActivity(intent)
             finish()
         }

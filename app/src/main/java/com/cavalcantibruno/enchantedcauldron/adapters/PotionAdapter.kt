@@ -1,4 +1,4 @@
-package com.cavalcantibruno.enchantedcauldron
+package com.cavalcantibruno.enchantedcauldron.adapters
 
 import android.util.Log
 import android.view.LayoutInflater

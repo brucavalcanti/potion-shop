@@ -1,4 +1,4 @@
-package com.cavalcantibruno.enchantedcauldron
+package com.cavalcantibruno.enchantedcauldron.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -34,13 +34,13 @@ class StockAdapter(private var stockList:List<Potion>)
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): StockAdapter.StockViewHolder {
+    ): StockViewHolder {
         val stockItemBinding = StockItemBinding.inflate(
             LayoutInflater.from(parent.context),parent,false)
         return StockViewHolder(stockItemBinding)
     }
 
-    override fun onBindViewHolder(holder: StockAdapter.StockViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: StockViewHolder, position: Int) {
         val item = stockList[position]
         holder.binding(item)
     }
